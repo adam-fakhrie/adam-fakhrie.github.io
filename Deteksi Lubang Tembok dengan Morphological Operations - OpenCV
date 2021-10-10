@@ -1,0 +1,21 @@
+#Import librari
+import numpy as np
+import cv2
+import matplotlib.pyplot as plt
+from skimage.io import imread, imshow
+from skimage.draw import disk
+from skimage.morphology import (erosion, dilation, closing, opening,
+                                area_closing, area_opening)
+from skimage.color import rgb2gray
+
+#masukkan gambar
+image1 = imread('../input/bahan-pcd/OIP.jfif')
+image2 = imread('../input/bahan-pcd/20211007_045532.jpg')
+image3 = imread('../input/bahan-pcd/PicsArt_10-09-06.16.0311 (2).jpg')
+
+fig, ax = plt.subplots(1,2, figsize=(12,6))
+ax[0].imshow(image2);
+ax[0].set_title('Original Image')
+binary = rgb2gray(image2)<0.15 #mengubah gambar menjadi greyscale
+ax[1].imshow(binary)
+ax[1].set_title('Binarized Image')
